@@ -1,20 +1,15 @@
-import { ProductProvider } from "./ProductContext";
-import { ProductTableProvider } from "./ProductTableContext";
-// import { UserProvider } from "./UserContext";
-// import { UserFormProvider } from "./UserFormContext";
+import { DataTableProvider } from "@/contexts/DataTableContext";
+import { getProductList } from "@/api/products";
 
 export function AppProvider({ children }: { children: React.ReactNode }) {
   return (
-    <ProductTableProvider>
-      <ProductProvider>
-      
-        {/* <UserProvider>
-          <UserFormProvider> */}
-            {children}
-          {/* </UserFormProvider>
-        </UserProvider> */}
-      
-      </ProductProvider>
-    </ProductTableProvider>
+    <DataTableProvider 
+      queryOptions={(filter) => ({
+        queryKey: ["products", filter], 
+        queryFn: () => getProductList(filter), 
+      })}
+    >
+      {children}
+    </DataTableProvider>
   );
 }

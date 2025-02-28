@@ -23,12 +23,12 @@ export default function Sidebar() {
         {/* Menu Products */}
         <SidebarItem icon={Package} label="List Products" to="/products" />
         <SidebarItem icon={PlusCircle} label="Add Product" to="/products/add" />
-        <SidebarItem icon={Edit} label="Update Product" to="/products/update" />
+        {/* <SidebarItem icon={Edit} label="Update Product" to="/products/update" /> */}
 
         {/* Menu Users */}
         <SidebarItem icon={Users} label="List Users" to="/users" />
         <SidebarItem icon={User} label="Add User" to="/users/add" />
-        <SidebarItem icon={Edit} label="Update User" to="/users/update" />
+        {/* <SidebarItem icon={Edit} label="Update User" to="/users/update" /> */}
       </nav>
     </aside>
   );

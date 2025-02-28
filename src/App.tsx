@@ -4,10 +4,10 @@ import Topbar from "@/components/layout/Topbar";
 import Login from "@/pages/Login";
 import Dashboard from "@/pages/Dashboard";
 import ProtectedRoute from "@/components/protect_router/ProtectedRoute";
-import ProductsList from "@/pages/Products/ProductsList";
 import { AppProvider } from "@/contexts/AppProvider";
-// import AddProduct from "@/pages/Products/AddProduct";
-// import UpdateProduct from "@/pages/Products/UpdateProduct";
+import ProductsPage from "./pages/Products/Products";
+import CreateProductPage from "@/pages/Products/AddProduct";
+import UpdateProductPage from "@/pages/Products/UpdateProductPage";
 // import UsersList from "@/pages/Users/UsersList";
 // import AddUser from "@/pages/Users/AddUser";
 // import UpdateUser from "@/pages/Users/UpdateUser";
@@ -38,9 +38,9 @@ function ProtectedLayout() {
               <Route path="/" element={<Dashboard />} />
 
               {/* Routes for Products */}
-              <Route path="/products" element={<ProductsList />} />
-              {/* <Route path="/products/add" element={<AddProduct />} />
-              <Route path="/products/update" element={<UpdateProduct />} /> */}
+              <Route path="/products" element={<ProductsPage />} />
+              <Route path="/products/add" element={<CreateProductPage />} />
+              <Route path="/products/update/:id" element={<UpdateProductPage />} />
 
               {/* Routes for Users */}
               {/* <Route path="/users" element={<UsersList />} />

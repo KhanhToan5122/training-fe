@@ -32,20 +32,6 @@ export interface User {
   email: string;
 }
 
-// export const getUser = async (): Promise<User> => {
-//   const response = await fetch("http://training.mumesoft.com/api/user", {
-//     headers: {
-//       Authorization: `Bearer ${localStorage.getItem("token")}`,
-//     },
-//   });
-
-//   if (!response.ok) {
-//     throw new Error("Failed to fetch user data");
-//   }
-
-//   return response.json();
-// };
-
 export const logout = async () => {
   localStorage.removeItem("token");
 };

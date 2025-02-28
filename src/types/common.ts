@@ -6,4 +6,10 @@ export interface ApiPaginationResponse<DataType> {
   total: number;
 }
 
+export interface ApiSingleResponse<DataType> {
+  data: DataType
+  status: boolean
+  msg: string
+}
+
 export type IntergerBoolean = 0 | 1

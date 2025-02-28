@@ -1,7 +1,7 @@
 // @/api/products.ts
 import axios from "axios";
 import { API_BASE_URL } from "@/config";
-import { ApiPaginationResponse, FilterQueryParams } from "@/types/common";
+import { ApiPaginationResponse, ApiSingleResponse, FilterQueryParams } from "@/types/common";
 import { Products } from "@/types/products";
 
 export const getProductList = async (filter?: FilterQueryParams): Promise<ApiPaginationResponse<Products>> => {
@@ -49,7 +49,7 @@ export const createProduct = async (formData: FormData): Promise<Products> => {
 export const updateProduct = async (id: string, formData: FormData): Promise<Products> => {
   try {
     const token = localStorage.getItem("token");
-    const response = await axios.post<Products>(
+    const response = await axios.put<Products>(
       `${API_BASE_URL}/products/${id}`,
       formData,
       {
@@ -71,7 +71,7 @@ export const updateProduct = async (id: string, formData: FormData): Promise<Pro
 export const fetchProductById = async (id: string): Promise<Products> => {
   try {
     const token = localStorage.getItem("token");
-    const response = await axios.get<Products>(
+    const response = await axios.get<ApiSingleResponse<Products>>(
       `${API_BASE_URL}/products/${id}`,
       {
         headers: {
@@ -80,7 +80,7 @@ export const fetchProductById = async (id: string): Promise<Products> => {
         },
       }
     );
-    return response.data;
+    return response.data.data;
   } catch (error) {
     console.error(`Error fetching product with id ${id}`, error);
     throw error;

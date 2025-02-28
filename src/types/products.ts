@@ -1,3 +1,4 @@
+import { z } from "zod";
 import { IntergerBoolean } from "./common";
 
 export interface Products {
@@ -16,3 +17,16 @@ export interface Products {
   };
   created_at: string;
 }
+
+export const formProductSchemas = z.object({
+  name: z.string().min(1, {
+    message: 'Trường này là trường bắt buộc'
+  }),
+  sku: z.string().min(1, {
+    message: 'Trường này là trường bắt buộc'
+  }),
+  price: z.coerce.number().min(0),
+  description: z.string().optional()
+})
+
+export type FormProductParams = z.infer<typeof formProductSchemas>

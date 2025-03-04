@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ChangeEvent, FormEvent, useState, useEffect } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { Products } from "@/types/products";
 
 interface ProductFormProps {

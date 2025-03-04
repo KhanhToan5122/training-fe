@@ -40,25 +40,51 @@ export default function Login() {
           <img src={uploaduplon} alt="Uplon Logo" className="h-8 w-auto" />
         </div>
         <h2 className="text-gray-500/60 font-bold text-center py-3 font-16">SIGN IN</h2>
-        <div className="mb-4">
+        <div className="mb-4 relative">
           <Input
             {...register("username")}
             placeholder="Enter your username"
             className="w-full p-2 placeholder:text-sm"
           />
           {errors.username && (
-            <p className="text-red-500 text-sm">{errors.username.message}</p>
+            <div className="absolute top-[125%] left-[20%] flex flex-col items-center">
+            {/* Mũi tên */}
+            <div className="absolute -top-2 left-4 w-0 h-0 border-l-8 border-r-8 border-b-8 border-l-transparent border-r-transparent border-b-black"></div>
+
+            <div className="w-0 h-0 border-l-7 border-r-7 border-b-7 border-l-transparent border-r-transparent -mt-[1px]"></div>
+      
+            {/* Hộp thông báo lỗi */}
+            <div className="h-[100%] flex items-center bg-[#ffffff] border border-black rounded-sm text-black text-sm p-2 shadow-md z-50">
+              <div className="bg-orange-500 text-white rounded-sm w-5 h-5 flex items-center justify-center mr-2 text-xs font-bold">
+                !
+              </div>
+              {errors.username.message}
+            </div>
+          </div>
           )}
         </div>
-        <div className="mb-4">
+        <div className="mb-4 relative">
           <Input
             {...register("password")}
             type="password"
             placeholder="Enter your password"
-            className="w-full p-2 placeholder:text-sm"
+            className="w-full p-2 border border-gray-300 rounded-md placeholder:text-sm"
           />
-          {errors.password && (
-            <p className="text-red-500 text-sm">{errors.password.message}</p>
+          {!errors.username && errors.password && (
+          <div className="absolute top-[125%] left-[20%] flex flex-col items-center">
+            {/* Mũi tên */}
+            <div className="absolute -top-2 left-4 w-0 h-0 border-l-8 border-r-8 border-b-8 border-l-transparent border-r-transparent border-b-black"></div>
+
+            <div className="w-0 h-0 border-l-7 border-r-7 border-b-7 border-l-transparent border-r-transparent -mt-[1px]"></div>
+      
+            {/* Hộp thông báo lỗi */}
+            <div className="h-[100%] flex items-center bg-[#ffffff] border border-black rounded-sm text-black text-sm p-2 shadow-md z-50">
+              <div className="bg-orange-500 text-white rounded-sm w-5 h-5 flex items-center justify-center mr-2 text-xs font-bold">
+                !
+              </div>
+              {errors.password.message}
+            </div>
+          </div>
           )}
         </div>
         <div className="mb-4 flex items-center">
@@ -75,7 +101,7 @@ export default function Login() {
         {loginError && <p className="text-red-500 text-sm mb-4">{loginError.message}</p>}
         <Button
           type="submit"
-          className="w-full bg-customGreen text-white p-2 rounded-md hover:bg-green-600 disabled:bg-gray-400"
+          className="w-full bg-customGreen text-white p-2 rounded-md"
           disabled={loginLoading}
         >
           {loginLoading ? "Logging in..." : "Log In"}

@@ -3,3 +3,13 @@
 @tailwind utilities;
 
 @layer base {}
+.bg-white-important {
+    @apply bg-white;
+  }
+  
+@layer components {
+.bg-white-important {
+    background-color: white !important;
+}
+}
+  

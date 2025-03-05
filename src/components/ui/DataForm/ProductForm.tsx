@@ -76,7 +76,7 @@ function ProductForm({ initialData, onSubmit, submitLabel = "Submit" }: ProductF
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4 max-w-lg mx-auto">
-      <div>
+      <div className="bg-white">
         <label className="block mb-1">Name</label>
         <input
           type="text"

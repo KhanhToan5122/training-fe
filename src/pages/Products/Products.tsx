@@ -26,7 +26,7 @@ function ProductsPage() {
 
   const columnConfigs = useMemo<TableColumnConfigs<Products>>(
     () => [
-      { id: "id", header: () => <div className="text-red-500">ID</div> },
+      { id: "id", header: "ID" },
       { id: "name", header: "Name" },
       { id: "sku", header: "SKU" },
       { id: "price", header: "Price" },
@@ -56,17 +56,24 @@ function ProductsPage() {
   );
 
   return (
+    <div className="bg-white p-4 rounded-md shadow">
     <DataTableProvider<ApiPaginationResponse<Products>>
       queryOptions={queryOptions}
       defaultFilter={{ page: 1, page_size: 10 }}
     >
-      <FilterContainer>
-        <FilterInput name="query" placeholder="Search..." title="Search" />
-        <Button type="submit">Submit</Button>
-      </FilterContainer>
+      <div className="font-semibold text-lg text-gray-700">
+        Default Example
+      </div>
+     
+        <FilterContainer>
+          <FilterInput name="query" title="Search:"/>
+          {/* <Button type="submit">Submit</Button> */}
+        </FilterContainer>
+      
       <DataTable<Products> columns={columnConfigs} uniqueKey="id" />
       <Pagination<Products> />
     </DataTableProvider>
+    </div>
   );
 }
 

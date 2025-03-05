@@ -24,6 +24,7 @@ export default function FilterInput({
             {...inputProps}
             value={value}
             onChange={onChange}
+            className="border border-gray-300 ml-1 rounded"
           />
         </label>
       )}

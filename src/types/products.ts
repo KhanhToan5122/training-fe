@@ -7,7 +7,7 @@ export interface Products {
   sku: string;
   price: number;
   images: string[] | null;
-  status: boolean;
+  status: 0 | 1;
   description: string;
   is_active: 0 | 1;
   category_ids: null;

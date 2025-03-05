@@ -14,7 +14,7 @@ function ProductForm({ initialData, onSubmit, submitLabel = "Submit" }: ProductF
     description: initialData?.description || "",
     sku: initialData?.sku || "",
     price: initialData?.price?.toString() || "",
-    status: initialData?.status?.toString() || "1",
+    status: initialData?.status === 1, 
     is_active: initialData?.is_active === 1, // Normalize 0 | 1 to boolean
     images: [] as File[],
   });
@@ -44,7 +44,7 @@ function ProductForm({ initialData, onSubmit, submitLabel = "Submit" }: ProductF
     const fields: (keyof typeof formData)[] = ["name", "description", "sku", "price", "status", "is_active"];
     fields.forEach((field) => {
       const value = formData[field];
-      if (field === "is_active") {
+      if (field === "is_active" || field === "status") {
         data.append(field, value ? "1" : "0"); // Convert boolean to 0 | 1
       } else if (value !== undefined && value !== null) {
         data.append(field, value as string);
@@ -63,7 +63,7 @@ function ProductForm({ initialData, onSubmit, submitLabel = "Submit" }: ProductF
           description: "",
           sku: "",
           price: "",
-          status: "1",
+          status: false,
           is_active: false,
           images: [],
         });
@@ -75,107 +75,95 @@ function ProductForm({ initialData, onSubmit, submitLabel = "Submit" }: ProductF
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 max-w-lg mx-auto">
-      <div className="bg-white">
-        <label className="block mb-1">Name</label>
+    <form onSubmit={handleSubmit} className="space-y-4 max-w mx-auto">
+
+      <div className="flex items-center justify-between pt-6 ">
+        <label className="text-base font-semibold text-gray-600">Name</label>
         <input
           type="text"
           name="name"
           value={formData.name}
           onChange={handleInputChange}
-          className="w-full border p-2 rounded"
+          className="w-[80%] p-2 rounded border"
         //   required
         />
       </div>
 
-      <div>
-        <label className="block mb-1">Description</label>
+      <div className="flex items-center justify-between pt-6 ">
+        <label className="text-base font-semibold text-gray-600">Description</label>
         <textarea
           name="description"
           value={formData.description}
           onChange={handleInputChange}
-          className="w-full border p-2 rounded"
+          className="w-[80%] border p-2 rounded"
         />
       </div>
 
-      <div>
-        <label className="block mb-1">SKU</label>
+      <div className="flex items-center justify-between pt-6 ">
+        <label className="text-base font-semibold text-gray-600">SKU</label>
         <input
           type="text"
           name="sku"
           value={formData.sku}
           onChange={handleInputChange}
-          className="w-full border p-2 rounded"
+          className="w-[80%] border p-2 rounded"
         //   required
         />
       </div>
 
-      <div>
-        <label className="block mb-1">Price</label>
+      <div className="flex items-center justify-between pt-6 ">
+        <label className="text-base font-semibold text-gray-600">Price</label>
         <input
           type="number"
           name="price"
           value={formData.price}
           onChange={handleInputChange}
-          className="w-full border p-2 rounded"
-          step="0.01"
+          className="w-[80%] border p-2 rounded"
+          step="100"
         //   required
         />
       </div>
 
-      <div>
-        <label className="block mb-1">Status (0 or 1)</label>
+      <div className="flex items-center justify-between pt-6 ">
+        <div className="flex items-center gap-4">
+        <label className="text-base font-semibold text-gray-600">Status (0 or 1)</label>
         <input
-          type="number"
+          type="checkbox"
           name="status"
-          value={formData.status}
-          onChange={handleInputChange}
-          className="w-full border p-2 rounded"
-          min="0"
-          max="1"
+          checked={formData.status}
+          onChange={(e) => setFormData((prev) => ({ ...prev, status: e.target.checked }))}
+          className=""
         //   required
         />
-      </div>
-
-      <div>
-        <label className="block mb-1">Is Active</label>
+        </div>
+        <div className="flex items-center w-1/7 gap-4">
+        <label className="text-base font-semibold text-gray-600">Is Active</label>
         <input
           type="checkbox"
           name="is_active"
           checked={formData.is_active}
           onChange={(e) => setFormData((prev) => ({ ...prev, is_active: e.target.checked }))}
-          className="border p-2 rounded"
+          className=""
         />
+        </div>
       </div>
 
-      {initialData?.images && initialData.images.length > 0 && (
-        <div className="mb-4">
-          <label className="block mb-1">Current Images</label>
-          <div className="flex gap-2">
-            {initialData.images.map((imageUrl, index) => (
-              <img
-                key={index}
-                src={imageUrl}
-                alt={`Product image ${index + 1}`}
-                className="w-20 h-20 object-cover rounded"
-              />
-            ))}
-          </div>
-        </div>
-      )}
-
-      <div>
-        <label className="block mb-1">New Images</label>
+      <div className="flex items-center pt-2 justify-between">
+        <label className="text-base font-semibold text-gray-600">New Images</label>
         <input
           type="file"
           name="images"
           onChange={handleFileChange}
-          className="w-full"
+          className="w-4/5"
           multiple
         />
       </div>
 
-      <Button type="submit">{submitLabel}</Button>
+      <div className="">
+      <Button type="submit"
+              className="text-white bg-blue-400 hover:bg-blue-500 mt-8 self-start"
+              >{submitLabel}</Button>
+      </div>
     </form>
   );
 }

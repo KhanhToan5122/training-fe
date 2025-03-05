@@ -2,7 +2,7 @@ import { useEffect, useMemo } from "react";
 import ProductForm from "@/components/features/products/ProductForm";
 import { updateProduct, fetchProductById } from "@/api/products";
 import { FormProductParams, formProductSchemas, Products } from "@/types/products";
-import { useParams, useNavigate, data } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import FormContainer from "@/components/ui/DataForm/FormContainer";
 

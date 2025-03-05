@@ -14,9 +14,11 @@ function CreateProductPage() {
   };
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-6">Create New Product</h1>
-      <ProductForm onSubmit={handleSubmit} submitLabel="Create Product" />
+    <div className="bg-white rounded-md">
+      <div className="p-6">
+        <h1 className="font-semibold text-lg text-gray-700">Create New Product</h1>
+        <ProductForm onSubmit={handleSubmit} submitLabel="Create Product" />
+      </div>
     </div>
   );
 }

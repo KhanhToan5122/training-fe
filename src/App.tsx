@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Sidebar from "@/components/layout/Sidebar";
 import Topbar from "@/components/layout/Topbar";
 import Login from "@/pages/Login";
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 import Dashboard from "@/pages/Dashboard";
 import ProtectedRoute from "@/components/protect_router/ProtectedRoute";
 import { AppProvider } from "@/contexts/AppProvider";
@@ -33,6 +34,8 @@ function ProtectedLayout() {
         <Sidebar />
         <div className="flex-1 flex flex-col w-full">
           <Topbar />
+          <div className="mb-4">
+          <Breadcrumbs />
           <main className="flex-1 bg-gray-100 p-6">
             <Routes>
               <Route path="/" element={<Dashboard />} />
@@ -48,6 +51,7 @@ function ProtectedLayout() {
               <Route path="/users/update" element={<UpdateUser />} /> */}
             </Routes>
           </main>
+          </div>
         </div>
       </div>
     </ProtectedRoute>

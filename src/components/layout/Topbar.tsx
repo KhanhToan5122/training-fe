@@ -37,7 +37,7 @@ export default function Topbar() {
   const [open, setOpen] = useState(false);
   const [openUser, setOpenUser] = useState(false);
   return (
-    <header className="w-full bg-gray-800 px-6 py-4 shadow-md flex items-center">
+    <header className="w-full bg-gray-700 px-6 py-4 shadow-md flex items-center">
       {/* Left: Toggle Sidebar + Logo */}
       <div className="flex items-center justify-start flex-1 gap-4">
         <Button variant="ghost" size="icon" onClick={toggleSidebar}>
@@ -49,7 +49,7 @@ export default function Topbar() {
           <Input
             type="text"
             placeholder="Search..."
-            className="pl-4 w-full bg-gray-700 text-white border-none rounded-full py-2"
+            className="pl-4 w-full bg-gray-600 text-white border-none rounded-full py-2"
           />
           <Search className="absolute top-1/2 transform -translate-y-1/2 right-5 text-gray-400 w-4 h-4" />
         </div>
@@ -57,7 +57,7 @@ export default function Topbar() {
         <div className="relative">
           {/* Nút Pages */}
           <button
-            className="flex items-center text-gray-400 font-semibold bg-gray-800 px-4 py-2"
+            className="flex items-center text-gray-400 font-semibold  px-4 py-2"
             onClick={() => setOpen(!open)}
           >
             Pages <ChevronDown className="w-4 h-4 ml-2" />

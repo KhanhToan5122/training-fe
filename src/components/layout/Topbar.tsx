@@ -45,7 +45,7 @@ export default function Topbar() {
         </Button>
 
         {/* Left: Search Bar */}
-        <div className="relative w-[25%] ">
+        <div className="relative w-[230px] hidden md:flex">
           <Input
             type="text"
             placeholder="Search..."
@@ -54,7 +54,7 @@ export default function Topbar() {
           <Search className="absolute top-1/2 transform -translate-y-1/2 right-5 text-gray-400 w-4 h-4" />
         </div>
 
-        <div className="relative">
+        <div className="relative hidden md:flex">
           {/* Nút Pages */}
           <button
             className="flex items-center text-gray-400 font-semibold  px-4 py-2"

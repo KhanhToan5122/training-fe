@@ -61,10 +61,10 @@ export default function Breadcrumbs() {
 
   return (
     
-    <nav className="text-sm text-gray-500 bg-white-100 flex justify-between items-center h-16 px-4">
+    <nav className="text-sm text-gray-500 bg-white-100 justify-between items-center px-4 grid grid-cols-1 sm:grid-cols-2 gap-y-0 min-h-[80px]">
       <span className="text-gray-700 text-lg font-semibold">{pageTitle}</span>
 
-      <ol className="flex space-x-2 items-center">
+      <ol className="flex space-x-2 items-center sm:justify-end">
         {/* Home luôn hiển thị */}
         <li>
           <Link to="/" className="text-gray-900 hover:underline">

@@ -20,14 +20,18 @@ function DataTable<TableData>({
   columns,
   uniqueKey,
 }: DataTableProps<TableData>) {
-  const { data, isLoading, filter, setFilter } = useTableDataContext<ApiPaginationResponse<TableData>>();
+  const { data, isLoading, filter, setFilter } =
+    useTableDataContext<ApiPaginationResponse<TableData>>();
 
   return (
     <Table className="w-full border-collapse border border-gray-300 table-fixed">
       <TableHeader>
         <TableRow>
-          {columns.map((column) => (
-            <TableHead key={column.id}>
+          {columns.map((column, colIndex) => (
+            <TableHead
+              key={column.id}
+              className={colIndex > 2 ? "hidden md:table-cell" : "table-cell"}
+            >
               {typeof column.header === "string"
                 ? column.header
                 : column.header()}
@@ -55,8 +59,11 @@ function DataTable<TableData>({
               }
               className="border-b hover:bg-gray-50"
             >
-              {columns.map((column) => (
-                <TableCell className="w-[150px] border-r">
+              {columns.map((column, colIndex) => (
+                <TableCell key={column.id}
+                className={`w-[150px] border-r ${
+                  colIndex > 2 ? "hidden md:table-cell" : "table-cell"
+                }`}>
                   {column.cell
                     ? column.cell({ data: item, index })
                     : (item?.[column.id as keyof TableData] as ReactNode)}

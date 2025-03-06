@@ -38,8 +38,8 @@ export default function Pagination<DataType>({ onItemChange }: PaginationProps) 
   if (!data || lastItem <= 1) return null;
 
   return (
-    <div className="flex items-center justify-between gap-2 mt-4">
-      <div className="ml-4 text-sm text-gray-600">
+    <div className="flex items-center justify-center md:justify-between gap-2 mt-4">
+      <div className="ml-4 text-sm text-gray-600 hidden md:flex">
         Showing {currentItem} to {lastItem} of {data?.total || 0} entries
       </div>
       <div className="flex gap-0">
@@ -48,6 +48,7 @@ export default function Pagination<DataType>({ onItemChange }: PaginationProps) 
           size="sm"
           onClick={() => handleItemChange(currentItem - 1)}
           disabled={currentItem === 1}
+          className="rounded-none "
         >
           Previous
         </Button>
@@ -57,6 +58,7 @@ export default function Pagination<DataType>({ onItemChange }: PaginationProps) 
             key={item}
             variant={currentItem === item ? "default" : "outline"}
             size="sm"
+            className={`rounded-none ${currentItem === item ? "bg-blue-500" : ""}`}
             onClick={() => handleItemChange(item)}
           >
             {item}
@@ -68,6 +70,7 @@ export default function Pagination<DataType>({ onItemChange }: PaginationProps) 
           size="sm"
           onClick={() => handleItemChange(currentItem + 1)}
           disabled={currentItem === lastItem}
+          className="rounded-none "
         >
           Next
         </Button>

@@ -136,7 +136,7 @@ function ProductForm({ initialData, onSubmit, submitLabel = "Submit" }: ProductF
         //   required
         />
         </div>
-        <div className="flex items-center w-1/7 gap-4">
+        <div className="flex items-center w-[95px] gap-4">
         <label className="text-base font-semibold text-gray-600">Is Active</label>
         <input
           type="checkbox"
